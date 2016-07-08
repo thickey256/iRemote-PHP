@@ -1,0 +1,10 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "*",
+        "guzzlehttp/guzzle": "^6.2",
+        "maknz/slack": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {"Thickey\\": "classes/"}
+    }
+}
