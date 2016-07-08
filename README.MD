@@ -1,11 +1,14 @@
 # iRemote-PHP
+
+![alt text](https://raw.githubusercontent.com/thickey256/iRemote-PHP/master/iRemote-php.png "Example slack message")
+
 This is a totally unofficial and not supported interface for BMWs iRemote private API.
 
 Your use of these API calls is entirely at your own risk. They are neither officially provided nor sanctioned.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-This is simply a bunch of curl calls that I wrapped up using PHP, all the credit and hard work was done by others and [https://github.com/edent/BMW-i-Remote](https://github.com/edent/BMW-i-Remote) was my main source of information.
+This is simply a bunch of curl calls that I wrapped up using PHP, all the credit and hard work was done by others and [https://github.com/edent/BMW-i-Remote](https://github.com/edent/BMW-i-Remote) was my main source of information. Currently this sends the status of an i3 (or i8) to slack whenever it's status changes.
 
 ## About
 This currently posts the status of your car whenever anything changes or whenever the status script is called. I have designed it to be run as a cron process.  I would suggest not hammering the private API and make a call once every 5 minutes. Once your config setting are correct the code will take care of authentication and expired tokens etc.
