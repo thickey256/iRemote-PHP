@@ -21,5 +21,8 @@
 	//guzzle
 	$guzzle['request_timeout'] = '5.0';
 	
-	
+	//initialstate
+	$initialstate['endpoint_url']	= 'https://groker.initialstate.com/api/events';
+	$initialstate['access_key']		= 'your-key';
+	$initialstate['bucket_key']		= 'your-bucket';
 ?>

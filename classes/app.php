@@ -21,6 +21,12 @@
 			define ("slack_channel",	$slack['channel']);
 			define ("slack_icon",		$slack['icon']);
 			
+			//initialstate
+			define ("initialstate_endpoint",	$initialstate['endpoint_url']);
+			define ("initialstate_access_key",	$initialstate['access_key']);
+			define ("initialstate_bucket_key",	$initialstate['bucket_key']);
+			
+			
 			//guzzle
 			define ("guzzle_timeout",	$guzzle['request_timeout']);
 			
