@@ -25,7 +25,10 @@
 			{
 				//nothing has changed
 			}
-			else if (($status_log['event'] == 'CHARGING_STARTED') && ($vehicle_status['updateReason'] == 'CHARGING_STARTED'))
+			else if (
+						($status_log['event'] == 'CHARGING_STARTED') && ($vehicle_status['updateReason'] == 'CHARGING_STARTED')
+					 || ($status_log['event'] == 'PREDICTION_UPDATE') && ($vehicle_status['updateReason'] == 'PREDICTION_UPDATE')
+				)
 			{
 				//still charging we don't want to do anything
 				//take this out if you want an updated to your charging every time the script is run.
