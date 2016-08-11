@@ -25,4 +25,8 @@
 	$initialstate['endpoint_url']	= 'https://groker.initialstate.com/api/events';
 	$initialstate['access_key']		= 'your-key';
 	$initialstate['bucket_key']		= 'your-bucket';
+	
+	//which services to use with the cron task
+	$cron['post_to_slack'] = 1;
+	$cron['post_to_initialstate'] = 1;
 ?>

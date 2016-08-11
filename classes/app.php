@@ -28,8 +28,11 @@
 			
 			
 			//guzzle
-			define ("guzzle_timeout",	$guzzle['request_timeout']);
+			define ("guzzle_timeout", $guzzle['request_timeout']);
 			
+			//which cron items to run
+			define ("slack_enabled", $cron['post_to_slack']);
+			define ("initialstate_enabled", $cron['post_to_initialstate']);
 		}
 	}
 ?>
