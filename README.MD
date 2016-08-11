@@ -8,7 +8,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 This is simply a bunch of curl calls that I wrapped up using PHP, all the credit and hard work was done by others and [https://github.com/edent/BMW-i-Remote](https://github.com/edent/BMW-i-Remote) was my main source of information.
 
 ## About
-This currently posts the status of your car whenever anything changes or whenever the status script is called. I have designed it to be run as a cron process.  I would suggest not hammering the private API and make a call once every 5 minutes. Once your config setting are correct the code will take care of authentication and expired tokens etc.
+This set of classes gets the current status of your BMW and then enables you to post an update to [Slack](https://slack.com/) and/or update [Initialstate](https://www.initialstate.com/) dashboard whenever the iremote_cron.php script is called. I would suggest not hammering the private API and make a call once every 5 minutes. Once your config setting are correct the code will take care of authentication and expired tokens etc.
+
+### Slack Message Screenshot
+![alt text](https://raw.githubusercontent.com/thickey256/iRemote-PHP/master/iRemote-php.png "Example slack message")
+
+### Initialstate Dashboard Screenshot
+![alt text](https://raw.githubusercontent.com/thickey256/iRemote-PHP/master/initialstate-dashboard.png "Example initialstate dashboard")
+
 
 Everything here has been copied from [here](https://shkspr.mobi/blog/2015/11/reverse-engineering-the-bmw-i3-api/), Which was the original and fantastic python implementation of API calls to ConnectedDrive.
 
@@ -23,7 +30,7 @@ Everything here has been copied from [here](https://shkspr.mobi/blog/2015/11/rev
 * Clone the repo
 * [Reverse engineer your Auth string](https://shkspr.mobi/blog/2015/11/reverse-engineering-the-bmw-i3-api/)
 * Run composer
-* Setup Cronjob to run slack_cron.php
+* Setup Cronjob to run iremote_cron.php
 
 ## Saving Access Tokens and previous statuses 
 Once a token has been requested it's good for 8 hours, so rather that making multiple unnecessary requests the token gets written into the configs directory for future use. This will automatically get refreshed when needed. The timestamp and event information is also written to a json file in the configs directory, this is so you don't get a slack message every time the script has run and nothing has changed.
