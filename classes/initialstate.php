@@ -115,6 +115,10 @@
 			//current extimate of charging time left.
 			$data_count ++;
 			$data_array[$data_count]['key'] = 'Charging Time Left';
+			if (! array_key_exists('chargingTimeRemaining', $status['vehicleStatus']))
+			{
+				$status['vehicleStatus']['chargingTimeRemaining'] = 0;
+			}
 			$status['vehicleStatus']['chargingTimeRemaining'] = initialstate::process_charging_time($status['vehicleStatus']['chargingTimeRemaining']);
 			$data_array[$data_count]['value'] = $status['vehicleStatus']['chargingTimeRemaining'];
 			
