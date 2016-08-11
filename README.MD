@@ -1,7 +1,4 @@
 # iRemote-PHP
-
-![alt text](https://raw.githubusercontent.com/thickey256/iRemote-PHP/master/iRemote-php.png "Example slack message")
-
 This is a totally unofficial and not supported interface for BMWs iRemote private API.
 
 Your use of these API calls is entirely at your own risk. They are neither officially provided nor sanctioned.
