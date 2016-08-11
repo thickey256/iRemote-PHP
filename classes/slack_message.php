@@ -12,15 +12,14 @@
 			
 			$status_log_file = 'configs/status_log.json';
 			
-			if (@file_exists($configPath))
+			if (@file_exists($status_log_file))
 			{
 				$status_log = json_decode(file_get_contents($status_log_file),1);
 			}
-			//this class is the one that needs all the fine tuneing and work done on it!
 			
 			//sort the array out so it's a bit nicer
 			$vehicle_status = $vehicle_status['vehicleStatus'];
-			
+				
 			if ($status_log['timestamp'] == $vehicle_status['updateTime'])
 			{
 				//nothing has changed
@@ -35,34 +34,31 @@
 			}
 			else
 			{
-				//something has changed.
-			
 				//sort out a file that logs the last 'new' result
 				$log_array['timestamp'] = $vehicle_status['updateTime'];
 				$log_array['event']		= $vehicle_status['updateReason'];
 				$token = file_put_contents($status_log_file, json_encode($log_array));	
-				
 				/*
-				//so we need to sort out the updateReason..
-				//valud resons are as follows :-
-					CHARGING_DONE
-					CHARGING_INTERRUPED
-					CHARGING_PAUSED
-					CHARGING_STARTED
-					CYCLIC_RECHARGING
-					DISCONNECTED
-					DOOR_STATE_CHANGED
-					NO_CYCLIC_RECHARGING
-					NO_LSC_TRIGGER
-					ON_DEMAND
-					PREDICTION_UPDATE
-					TEMPORARY_POWER_SUPPLY_FAILURE
-					UNKNOWN
-					VEHICLE_MOVING
-					VEHICLE_SECURED
-					VEHICLE_SHUTDOWN
-					VEHICLE_SHUTDOWN_SECURED
-					VEHICLE_UNSECURED
+					so we need to sort out the updateReason..
+					valud resons are as follows :-
+						CHARGING_DONE
+						CHARGING_INTERRUPED
+						CHARGING_PAUSED
+						CHARGING_STARTED
+						CYCLIC_RECHARGING
+						DISCONNECTED
+						DOOR_STATE_CHANGED
+						NO_CYCLIC_RECHARGING
+						NO_LSC_TRIGGER
+						ON_DEMAND
+						PREDICTION_UPDATE
+						TEMPORARY_POWER_SUPPLY_FAILURE
+						UNKNOWN
+						VEHICLE_MOVING
+						VEHICLE_SECURED
+						VEHICLE_SHUTDOWN
+						VEHICLE_SHUTDOWN_SECURED
+						VEHICLE_UNSECURED
 				*/
 				
 				if ($vehicle_status['updateReason'] == 'VEHICLE_SHUTDOWN_SECURED')
