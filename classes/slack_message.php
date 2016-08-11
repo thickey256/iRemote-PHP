@@ -10,7 +10,7 @@
 		function __construct($vehicle_status)
 		{
 			
-			$status_log_file = __DIR__+'configs/status_log.json';
+			$status_log_file = __DIR__.'/../configs/status_log.json';
 			
 			if (@file_exists($status_log_file))
 			{
