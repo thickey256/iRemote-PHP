@@ -6,7 +6,7 @@
 	{
 		function __construct()
 		{
-			include ('configs/config.php');
+			include (__DIR__.'configs/config.php');
 			
 			//iRemote
 			define ("iRemote_server",	$iRemote['server']);
