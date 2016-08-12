@@ -75,12 +75,12 @@
 		{
 			//plot the current location on a map tile
 			$data_count = 0;
-			$data_array[0]['key'] = 'Map';
+			$data_array[$data_count]['key'] = 'Map';
 			$data_array[$data_count]['value'] = $status['vehicleStatus']['position']['lat'].','.$status['vehicleStatus']['position']['lon'];
 			
 			//total mileage
 			$data_count ++;
-			$data_array[0]['key'] = 'Total Mileage';
+			$data_array[$data_count]['key'] = 'Total Mileage';
 			//convert KM to Miles
 			$status['vehicleStatus']['mileage'] =  initialstate::convert_km_to_miles($status['vehicleStatus']['mileage']);
 			$data_array[$data_count]['value'] = $status['vehicleStatus']['mileage'];
