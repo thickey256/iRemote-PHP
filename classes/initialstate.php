@@ -67,6 +67,8 @@
 			{
 				$status = "Not Charging";
 			}
+			$status = str_replace('_',' ',$status);
+			
 			return ucwords(strtolower($status));
 		}
 		
