@@ -92,6 +92,10 @@
 				{
 					$vehicle_status['updateReason'] = "Charging Completed";
 				}
+				else if ($vehicle_status['updateReason'] == 'PREDICTION_UPDATE')
+				{
+					$vehicle_status['updateReason'] = "Charging Time Update";
+				}
 
 				$settings = [
 					'username' => slack_user,
@@ -128,6 +132,18 @@
 				$temp_field['value'] = floor($vehicle_status['mileage'] * 0.621371)." miles";
 				$temp_field['short'] = "1";
 				$message['fields'][] = $temp_field;
+				
+				//if charging then it would be good to see how long is left!
+				if (array_key_exists('chargingTimeRemaining', $vehicle_status))
+				{
+					//turn minutes to hours minutes
+					$vehicle_status['chargingTimeRemaining'] = date('H:i', mktime(0,$vehicle_status['chargingTimeRemaining']));
+					
+					$temp_field['title'] = "Charge Time Remaining";
+					$temp_field['value'] = $vehicle_status['chargingTimeRemaining'];
+					$temp_field['short'] = "1";
+					$message['fields'][] = $temp_field;
+				}
 				
 				$slack_client->to(slack_channel)->attach($message)->send();
 			}
