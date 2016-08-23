@@ -27,6 +27,7 @@
 			else if (
 						($status_log['event'] == 'CHARGING_STARTED') && ($vehicle_status['updateReason'] == 'CHARGING_STARTED')
 					 || ($status_log['event'] == 'PREDICTION_UPDATE') && ($vehicle_status['updateReason'] == 'PREDICTION_UPDATE')
+					 || ($status_log['event'] == 'VEHICLE_SECURED') && ($vehicle_status['updateReason'] == 'VEHICLE_SECURED')
 				)
 			{
 				//still charging we don't want to do anything
@@ -96,6 +97,11 @@
 				{
 					$vehicle_status['updateReason'] = "Charging Time Update";
 				}
+				else if ($vehicle_status['updateReason'] == 'VEHICLE_SECURED')
+				{
+					$vehicle_status['updateReason'] = "Car Locked";
+				}
+				
 
 				$settings = [
 					'username' => slack_user,
