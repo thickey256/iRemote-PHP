@@ -129,10 +129,25 @@
 				$temp_field['short'] = "1";
 				$message['fields'][] = $temp_field;
 				
-				$temp_field['title'] = "Rex Range";
-				$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$vehicle_status['fuelPercent']."%";
-				$temp_field['short'] = "1";
-				$message['fields'][] = $temp_field;
+				if(array_key_exists('fuelPercent', $vehicle_status)) {
+					
+					$temp_field['title'] = "Rex Range";
+					$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$vehicle_status['fuelPercent']."%";
+					$temp_field['short'] = "1";
+					$message['fields'][] = $temp_field;
+				
+				} else {
+					
+					$fuel_percent = $vehicle_status['remainingFuel'] / $vehicle_status['maxFuel'];
+                                	$fuel_percent = $fuel_percent * 100;
+                                	$fuel_percent = floor($fuel_percent);
+					
+					$temp_field['title'] = "Rex Range";
+					$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$fuel_percent."%";
+					$temp_field['short'] = "1";
+					$message['fields'][] = $temp_field;
+
+				}
 				
 				$temp_field['title'] = "Current Mileage";
 				$temp_field['value'] = floor($vehicle_status['mileage'] * 0.621371)." miles";
