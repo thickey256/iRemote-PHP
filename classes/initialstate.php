@@ -12,7 +12,7 @@
 		function change_status($data_array)
 		{
 			$initialstate_client = new Client();
-			
+
 			$response = $initialstate_client->request('POST', initialstate_endpoint,
 			[
 				'timeout' => guzzle_timeout,
@@ -159,8 +159,8 @@
 				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowDriverFront']));
 
 				$data_count ++;
-                                $data_array[$data_count]['key'] = 'Passenger Front Window';
-                                $data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowPassengerFront']));
+				$data_array[$data_count]['key'] = 'Passenger Front Window';
+				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowPassengerFront']));
 				
 				if(array_key_exists('windowDriverRear', $status['vehicleStatus'])) {
 					$data_count ++;
