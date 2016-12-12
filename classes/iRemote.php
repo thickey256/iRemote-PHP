@@ -129,5 +129,25 @@
 			return $response_array;
 		}
 		
+		// gets the last trip data from specific vehicle
+		function get_vehicle_last_trip($vin = iRemote_vin)
+		{
+			$iremote_client = new Client();
+
+			$server_url = iRemote_server.'/webapi/v1/user/vehicles/'.$vin.'/statistics/lastTrip';
+			$response = $iremote_client->request('GET', $server_url,
+			[
+				'timeout' => guzzle_timeout,
+				'headers' =>
+				[
+					'Authorization' => 'Bearer '.iRemote::get_token(),
+					'Content-type' => 'application/x-www-form-urlencoded'
+				]
+			]);
+
+			$response_array = json_decode($response->getBody(),1);
+
+			return $response_array;
+		}		
 	}
 ?>

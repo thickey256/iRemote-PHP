@@ -7,6 +7,7 @@
 
 	//get the status of the vehicle
 	$status = Thickey\iRemote::get_vehicle_status();
+	$lastTrip = Thickey\iRemote::get_vehicle_last_trip();
 
 	if (slack_enabled == 1)
 	{
@@ -18,5 +19,11 @@
 	{
 		//process and update initialstate dashboard
 		$dashboard = Thickey\initialstate::new_status($status);
+	}
+	
+	if (dweet_enabled == 1)
+	{
+		//process dweet efficiency update
+		$dweet_dash = Thickey\dweet::process_trip_data($lastTrip);
 	}
 ?>
