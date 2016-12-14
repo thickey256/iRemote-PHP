@@ -24,6 +24,6 @@
 	if (dweet_enabled == 1)
 	{
 		//process dweet efficiency update
-		$dweet_dash = Thickey\dweet::process_trip_data($lastTrip);
+		$dweet_dash = Thickey\dweet::process_trip_data($lastTrip, $status);
 	}
 ?>
