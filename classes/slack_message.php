@@ -120,9 +120,17 @@
 			$temp_field['short'] = "1";
 			$message['fields'][] = $temp_field;
 			
-			$electric_percent = $vehicle_status['remainingRangeElectricMls'] / $vehicle_status['maxRangeElectricMls'];
-			$electric_percent = $electric_percent * 100;
-			$electric_percent = floor($electric_percent);
+			if(array_key_exists('chargingLevelHv'], $vehicle_status)) {
+				
+				$electric_percent = $vehicle_status['chargingLevelHv'];
+				
+			} else {
+				
+				$electric_percent = $vehicle_status['remainingRangeElectricMls'] / $vehicle_status['maxRangeElectricMls'];
+				$electric_percent = $electric_percent * 100;
+				$electric_percent = floor($electric_percent);
+				
+			}
 			
 			$temp_field['title'] = "Electric Range";
 			$temp_field['value'] = $vehicle_status['remainingRangeElectricMls']." miles : ".$electric_percent."%";
@@ -131,23 +139,20 @@
 			
 			if(array_key_exists('fuelPercent', $vehicle_status)) {
 				
-				$temp_field['title'] = "Rex Range";
-				$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$vehicle_status['fuelPercent']."%";
-				$temp_field['short'] = "1";
-				$message['fields'][] = $temp_field;
-			
+				$fuel_percent = $vehicle_status['fuelPercent'];
+				
 			} else {
 				
 				$fuel_percent = $vehicle_status['remainingFuel'] / $vehicle_status['maxFuel'];
                                	$fuel_percent = $fuel_percent * 100;
                                	$fuel_percent = floor($fuel_percent);
 				
-				$temp_field['title'] = "Rex Range";
-				$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$fuel_percent."%";
-				$temp_field['short'] = "1";
-				$message['fields'][] = $temp_field;
-
 			}
+			
+			$temp_field['title'] = "Rex Range";
+			$temp_field['value'] = $vehicle_status['remainingRangeFuelMls']." miles : ".$fuel_percent."%";
+			$temp_field['short'] = "1";
+			$message['fields'][] = $temp_field;
 			
 			$temp_field['title'] = "Current Mileage";
 			$temp_field['value'] = floor($vehicle_status['mileage'] * 0.621371)." miles";
