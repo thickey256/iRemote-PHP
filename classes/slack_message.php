@@ -120,7 +120,7 @@
 			$temp_field['short'] = "1";
 			$message['fields'][] = $temp_field;
 			
-			if(array_key_exists('chargingLevelHv'], $vehicle_status)) {
+			if(array_key_exists('chargingLevelHv', $vehicle_status)) {
 				
 				$electric_percent = $vehicle_status['chargingLevelHv'];
 				
