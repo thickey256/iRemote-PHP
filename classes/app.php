@@ -26,6 +26,8 @@
 			define ("initialstate_access_key",	$initialstate['access_key']);
 			define ("initialstate_bucket_key",	$initialstate['bucket_key']);
 			
+			//dweet
+			define ("dweet_endpoint",	$dweet['endpoint_url']);
 			
 			//guzzle
 			define ("guzzle_timeout", $guzzle['request_timeout']);
@@ -33,6 +35,7 @@
 			//which cron items to run
 			define ("slack_enabled", $cron['post_to_slack']);
 			define ("initialstate_enabled", $cron['post_to_initialstate']);
+			define ("dweet_enabled", $cron['post_to_dweet']);
 		}
 	}
 ?>

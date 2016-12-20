@@ -26,6 +26,9 @@
 	$initialstate['access_key']		= 'your-key';
 	$initialstate['bucket_key']		= 'your-bucket';
 	
+	//dweet
+        $dweet['endpoint_url']  = 'https://dweet.io/dweet/for/your-dweet-name-here';
+	
 	//which services to use with the cron task
 	$cron['post_to_slack'] = 1;
 	$cron['post_to_initialstate'] = 1;

@@ -12,7 +12,7 @@
 		function change_status($data_array)
 		{
 			$initialstate_client = new Client();
-						
+
 			$response = $initialstate_client->request('POST', initialstate_endpoint,
 			[
 				'timeout' => guzzle_timeout,
@@ -98,10 +98,24 @@
 			$data_array[$data_count]['value'] = $status['vehicleStatus']['chargingLevelHv'];
 			
 			//the remaining petrol power in %
-			$data_count ++;
-			$data_array[$data_count]['key'] = 'Petrol Percent';
-			$data_array[$data_count]['value'] = $status['vehicleStatus']['fuelPercent'];
-			
+			if(array_key_exists('fuelPercent', $status['vehicleStatus'])) {
+
+				$data_count ++;
+				$data_array[$data_count]['key'] = 'Petrol Percent';
+				$data_array[$data_count]['value'] = $status['vehicleStatus']['fuelPercent'];
+
+			} else {
+
+				$fuel_percent = $status['vehicleStatus']['remainingFuel'] / $status['vehicleStatus']['maxFuel'];
+				$fuel_percent = $fuel_percent * 100;
+				$fuel_percent = floor($fuel_percent);
+				
+				$data_count ++;
+				$data_array[$data_count]['key'] = 'Petrol Percent';
+				$data_array[$data_count]['value'] = $fuel_percent;
+
+			}
+
 			//the charging cable status
 			$data_count ++;
 			$data_array[$data_count]['key'] = 'Connection Status';
@@ -143,18 +157,20 @@
 				$data_count ++;
 				$data_array[$data_count]['key'] = 'Driver Front Window';
 				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowDriverFront']));
-				
-				$data_count ++;
-				$data_array[$data_count]['key'] = 'Driver Rear Window';
-				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowDriverRear']));
-				
+
 				$data_count ++;
 				$data_array[$data_count]['key'] = 'Passenger Front Window';
 				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowPassengerFront']));
 				
-				$data_count ++;
-				$data_array[$data_count]['key'] = 'Passenger Rear Window';
-				$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowPassengerRear']));
+				if(array_key_exists('windowDriverRear', $status['vehicleStatus'])) {
+					$data_count ++;
+                                	$data_array[$data_count]['key'] = 'Driver Rear Window';
+                                	$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowDriverRear']));
+				
+					$data_count ++;
+                                	$data_array[$data_count]['key'] = 'Passenger Rear Window';
+                                	$data_array[$data_count]['value'] = ucwords(strtolower($status['vehicleStatus']['windowPassengerRear']));
+				}
 				
 				$data_count ++;
 				$data_array[$data_count]['key'] = 'Trunk';

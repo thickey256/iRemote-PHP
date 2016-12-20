@@ -6,6 +6,7 @@ composer.lock
 configs/config.php
 configs/iremote_token.json
 configs/status_log.json
+configs/trip_log.json
 
 **/.DS_Store
 
