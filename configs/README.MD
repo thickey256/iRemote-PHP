@@ -13,7 +13,7 @@ There are three different servers, you need to select the correct one or else th
 OK so this is going to be the hardest part, in short you need to use an offical client (iOS/Android) and packet sniff some of the traffic so you can get the authorisation string. I had success following the instructions [here](https://shkspr.mobi/blog/2015/11/reverse-engineering-the-bmw-i3-api/)
 
 ### Everythign else
-Everything else should be self explanatory
+Everything else should be self explanatory, if not ask away!
 
 
 ## Slack
