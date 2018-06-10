@@ -34,6 +34,11 @@
 						//but we can get a new one! yay!
 						$token_array = iRemote::get_new_token();
 					}
+
+					if ($token_array == null)
+					{
+						$token_array = iRemote::get_new_token();
+					}
 				}
 			}
 			//otherwise get a new token to play with!
